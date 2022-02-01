@@ -29,8 +29,9 @@ declare -a valid_commands=(start finish)
 
 function lab_start {
   print_header "Preparing ${target} for lab exercise work:"
-  pad " . Cleaning RHDS Server and Preparing for Installation"
+  pad " . Cleaning RHDS Server and Preparing for Configuration"
   cd /home/student/Github/rh423_labs_public/Playbooks
+  ansible-playbook rhds_remove.yml
   ansible-playbook rhds_install.yml
   print_SUCCESS
   print_line
