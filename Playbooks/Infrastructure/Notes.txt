@@ -1,0 +1,3 @@
+Collections needed for newer Ansible
+
+ansible-galaxy collection install -r collections/requirements.yml -p collections/
