@@ -30,7 +30,7 @@ declare -a valid_commands=(start finish)
 function lab_start {
   print_header "Preparing ${target} for lab exercise work:"
   pad " . Cleaning RHDS Server and Preparing for Installation"
-  cd /home/student/Github/rh423_labs/Playbooks
+  cd /home/student/Github/rh423_labs_public/Playbooks
   ansible-playbook rhds_remove.yml
   print_SUCCESS
   print_line
@@ -41,7 +41,7 @@ function lab_start {
 function lab_finish {
     print_header "Preparing ${target} for lab cleanup and next lab:"
     pad " . Ensuring RHDS is Installed and Configured for upcoming labs"
-    cd /home/student/Github/rh423_labs/Playbooks
+    cd /home/student/Github/rh423_labs_public/Playbooks
     ansible-playbook rhds_install.yml
     ansible-playbook rhds_instance.yml
     print_SUCCESS
