@@ -1,20 +1,20 @@
 ---
-- name: install RHDS 
-  hosts: ws362_rhds
+- name: install RHDS
+  hosts: rhds
   tasks:
-    - name: install packages      
+    - name: install packages
       block:
 
       # verify repo available
 
       - name: cockpit packages are installed
         dnf:
-          name: 'cockpit' 
+          name: 'cockpit'
           state: present
 
       - name: redhat-ds:11 appstream is installed
         dnf:
-          name: '@redhat-ds:11' 
+          name: '@redhat-ds:11'
           state: present
 
     - name: firewall ports are open
@@ -48,4 +48,3 @@
         name: cockpit.socket
         state: started
         enabled: yes
-

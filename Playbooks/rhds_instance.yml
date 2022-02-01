@@ -1,17 +1,16 @@
 ---
-- name: configure instance for RHDS 
-  hosts: ws362_rhds
+- name: configure instance for RHDS
+  hosts: rhds
   vars:
      # inf_file: dscreate_sample.inf
      # inf_file: dscreate_ge.inf
      inf_file: dscreate_lab.inf
   tasks:
-    - name: copy inf file to server    
-      copy: 
+    - name: copy inf file to server
+      copy:
         src: "Files/{{ inf_file }}"
         dest: "/root/{{ inf_file }}"
 
     - name: use dscreate with file
       command: "dscreate from-file /root/{{ inf_file }}"
         # consider fail_when and changed_when
-

@@ -3,7 +3,7 @@
   # Future should have these as part of materials.example.com for download
   # then pushed to appropriate systems in lab start scripts of completed course
 
-  hosts: ws362_workstation
+  hosts: workstation
 
   tasks:
     - name: solutions dir exists on workstation
@@ -15,8 +15,7 @@
          mode: "0755"
 
     - name: push all exercise helper files to workstation
-      synchronize: 
+      synchronize:
         src: "Files/rh423_solutions"
         dest: "/home/student/"
         # consider delete option to clean up files removed from src folder
-

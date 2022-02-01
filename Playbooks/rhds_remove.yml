@@ -1,8 +1,8 @@
 ---
-- name: remove RHDS 
-  hosts: ws362_rhds
+- name: remove RHDS
+  hosts: rhds
   vars:
-     instance_names: 
+     instance_names:
         - slapd-rh423
         - slapd-demo
   tasks:
@@ -19,9 +19,9 @@
       command: 'killall ns-slapd'
       ignore_errors: true
 
-    - name: appstream/packages are removed     
+    - name: appstream/packages are removed
       dnf:
-        name: '@redhat-ds:11' 
+        name: '@redhat-ds:11'
         state: absent
 
     - name: ensure no residual instances, suffixes, or databases
@@ -52,4 +52,3 @@
       loop:
           - ldap
           - ldaps
-

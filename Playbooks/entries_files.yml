@@ -2,23 +2,21 @@
 - name: Push known working files for entries chapter to server
   # This playbook will go aways - see solutions_files.yml for next iteration
 
-  hosts: ws362_rhds
+  hosts: rhds
   vars:
      ca_cert: dirsrv_ca.crt
      clients_file: clients.ldif
   tasks:
     - name: ldif GE solution file to server
-      copy: 
+      copy:
         src: "Files/solutions/{{ clients_file }}"
         dest: "/home/student/solution-{{ clients_file }}"
         owner: student
         group: student
         mode: '0644'
 
-    - name: ca cert file to server:/tmp   
-      copy: 
+    - name: ca cert file to server:/tmp
+      copy:
         src: "Files/solutions/{{ ca_cert }}"
         dest: "/tmp/{{ ca_cert }}"
         mode: '0644'
-
-
