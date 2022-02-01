@@ -1,5 +1,30 @@
 = RH423 Lab Scripts and Playbooks
 
+== Usage
+
+. Create and Switch to *Github* Directory
++
+[source,bash]
+----
+[student@workstation ~]$ mkdir Github ; cd Github
+[student@workstation Github]$
+----
+
+. Clone resources and contents
++
+[source,bash]
+----
+[student@workstation Github]$ git clone https://github.com/tmichett/rh423_labs.git
+Cloning into 'rh423_labs'...
+remote: Enumerating objects: 48, done.
+remote: Counting objects: 100% (48/48), done.
+remote: Compressing objects: 100% (34/34), done.
+remote: Total 48 (delta 11), reused 45 (delta 11), pack-reused 0
+Unpacking objects: 100% (48/48), 13.63 MiB | 13.85 MiB/s, done.
+----
+
+
+
 == Playbooks
 
 Contains playbooks to be used to setup and complete lab exercises as well as catch-up playbooks to get to specific exercises and labs.

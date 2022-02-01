@@ -29,9 +29,9 @@ declare -a valid_commands=(start finish)
 
 function lab_start {
   print_header "Preparing ${target} for lab exercise work:"
-  pad " . Downloading RHV Playbook Files"
-  cd /home/student
-  wget http://materials/Sat6_Files/RHV_Ansible.zip ; unzip RHV_Ansible.zip ; rm RHV_Ansible.zip
+  pad " . Cleaning RHDS Server and Preparing for Installation"
+  cd /home/student/Github/rh423_labs/Playbooks
+  ansible-playbook rhds_remove.yml
   print_SUCCESS
   print_line
 }
@@ -40,9 +40,10 @@ function lab_start {
 
 function lab_finish {
     print_header "Preparing ${target} for lab cleanup and next lab:"
-    pad " . Stopping DHCP Server and Transferring Control to Satellite"
-    cd /home/student/RHV_Ansible
-    ansible-playbook Start_Sat_Labs.yml
+    pad " . Ensuring RHDS is Installed and Configured for upcoming labs"
+    cd /home/student/Github/rh423_labs/Playbooks
+    ansible-playbook rhds_install.yml
+    ansible-playbook rhds_instance.yml
     print_SUCCESS
     print_line
 }
