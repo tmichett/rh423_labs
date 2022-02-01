@@ -1,0 +1,55 @@
+---
+- name: remove RHDS 
+  hosts: ws362_rhds
+  vars:
+     instance_names: 
+        - slapd-rh423
+        - slapd-demo
+  tasks:
+    # consider options to determine any existing instance_name from system
+
+    - name: instances are removed
+      command: 'dsctl {{ item }} remove --do-it'
+      # consider failed_when and changed_when
+      ignore_errors: true
+      loop: "{{ instance_names }}"
+      # explore errors if instance does not exist
+
+    - name: force kill any remaining instances
+      command: 'killall ns-slapd'
+      ignore_errors: true
+
+    - name: appstream/packages are removed     
+      dnf:
+        name: '@redhat-ds:11' 
+        state: absent
+
+    - name: ensure no residual instances, suffixes, or databases
+      file:
+         path: "{{ item }}"
+         state: absent
+      loop:
+         - /etc/dirsrv
+         - /var/lib/dirsrv
+         - /var/log/dirsrv
+
+    - name: firewalld disable ports 389/tcp and 636/tcp
+      # RHDS install guide uses ports so solutions use ports
+      firewalld:
+          port: "{{ item }}"
+          permanent: true
+          state: disabled
+      loop:
+          - 389/tcp
+          - 636/tcp
+
+    - name: firewalld disable services ldap and ldaps
+      # Students might use services instead of ports
+      firewalld:
+          service: "{{ item }}"
+          permanent: true
+          state: disabled
+      loop:
+          - ldap
+          - ldaps
+

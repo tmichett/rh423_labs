@@ -1,0 +1,31 @@
+localhost ansible_ssh_user=kiosk
+ws362_workstation
+ws362_classroom ansible_ssh_user=instructor
+ws362_bastion
+ws362_rhds
+ws362_replica1
+ws362_replica2
+ws362_servera
+
+[clients]
+ws362_servera
+
+[servers]
+ws362_rhds
+ws362_replica1
+ws362_replica2
+
+[replicas]
+ws362_replica1
+ws362_replica2
+
+[novello]
+ws362_workstation
+ws362_bastion
+ws362_rhds
+ws362_replica1
+ws362_replica2
+ws362_servera
+
+[novello:vars]
+ansible_ssh_user = root

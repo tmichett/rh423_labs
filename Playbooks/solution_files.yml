@@ -1,0 +1,22 @@
+---
+- name: Push known working files to workstation/rh423_solutions
+  # Future should have these as part of materials.example.com for download
+  # then pushed to appropriate systems in lab start scripts of completed course
+
+  hosts: ws362_workstation
+
+  tasks:
+    - name: solutions dir exists on workstation
+      file:
+         path: /home/student/rh423_solutions
+         state: directory
+         owner: student
+         group: student
+         mode: "0755"
+
+    - name: push all exercise helper files to workstation
+      synchronize: 
+        src: "Files/rh423_solutions"
+        dest: "/home/student/"
+        # consider delete option to clean up files removed from src folder
+

@@ -1,0 +1,9 @@
+= RH423 Lab Scripts and Playbooks
+
+== Playbooks
+
+Contains playbooks to be used to setup and complete lab exercises as well as catch-up playbooks to get to specific exercises and labs.
+
+== Scripts
+
+Lab scripts that will call and execute the playbooks.

@@ -1,0 +1,8 @@
+dn: o=RH423,dc=lab,dc=example,dc=com
+objectclass: organization
+objectclass: top
+objectclass: rh423project
+o: RH423
+rh423projectname: class
+rh423category: security
+

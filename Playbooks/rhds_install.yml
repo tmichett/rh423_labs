@@ -1,0 +1,51 @@
+---
+- name: install RHDS 
+  hosts: ws362_rhds
+  tasks:
+    - name: install packages      
+      block:
+
+      # verify repo available
+
+      - name: cockpit packages are installed
+        dnf:
+          name: 'cockpit' 
+          state: present
+
+      - name: redhat-ds:11 appstream is installed
+        dnf:
+          name: '@redhat-ds:11' 
+          state: present
+
+    - name: firewall ports are open
+      block:
+
+      # verify firewalld installed
+      # verify firewalld started
+
+      - name: firewalld allows 389/tcp and 636/tcp
+        # RHDS install guide uses ports. could use service ldap and ldaps
+        firewalld:
+          port: "{{ item }}"
+          permanent: true
+          state: enabled
+          immediate: true
+        loop:
+          - 389/tcp
+          - 636/tcp
+
+      - name: firewalld allows cockpit
+        firewalld:
+          service: "{{ item }}"
+          permanent: true
+          state: enabled
+          immediate: true
+        loop:
+          - cockpit
+
+    - name: cockpit socket enabled
+      systemd:
+        name: cockpit.socket
+        state: started
+        enabled: yes
+

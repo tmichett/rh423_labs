@@ -1,0 +1,18 @@
+---
+- name: push content to materials.example.com
+  hosts: ws362_classroom
+  become: true
+  tasks:
+    - name: docs dir exists
+      file:
+        # path will need to update for rh423 course instead of ws362 but keep the RHEL and IdM docs available (currently in readonly mounted image)
+        path: /content/courses/ws362/rhel8.4/materials/rhds_docs
+        state: directory
+
+    - name: RHDS docs
+      synchronize:
+        src: Files/docs/
+        dest: /content/courses/ws362/rhel8.4/materials/rhds_docs
+
+
+

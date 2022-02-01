@@ -1,0 +1,8 @@
+#
+# RH423 Lab defined schema
+#
+dn: cn=schema
+attributeTypes: ( 2.16.840.1.113730.999.2.1 NAME 'labName' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'RH423 defined' )
+attributeTypes: ( 2.16.840.1.113730.999.2.2 NAME 'labStatus' EQUALITY booleanMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE X-ORIGIN 'RH423 defined' )
+objectclasses: ( 2.16.840.1.117370.999.2.3 NAME 'rh423Lab' DESC 'RH423 Lab Object Class' SUP top AUXILIARY MAY (labName $ labStatus) X-ORIGIN 'RH423 defined')
+
