@@ -1,0 +1,17 @@
+---
+- name: Create Github Resources and Environment
+  hosts: workstation
+  ansible_user: student
+
+  ### This playbook is run as part of the setup environment script and is to be run from the workstation system.
+  tasks:
+    - name: Create Github Location
+      file:
+        # path will need to update for rh423 course instead of ws362 but keep the RHEL and IdM docs available (currently in readonly mounted image)
+        path: /home/student/Github
+        state: directory
+
+    - name: Git checkout
+      git:
+        repo: 'https://github.com/tmichett/rh423_labs_public.git'
+        dest: /srv/checkout
