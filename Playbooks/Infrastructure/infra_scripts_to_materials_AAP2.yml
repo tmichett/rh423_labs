@@ -5,13 +5,18 @@
   collections:
     - ansible.posix  ### Needed for synchronize
   tasks:
-    - name: Grading Scripts
+    - name: Grading Scripts - Check for Directory
       file:
         # path will need to update for rh423 course instead of ws362 but keep the RHEL and IdM docs available (currently in readonly mounted image)
         path: /content/courses/ws362/rhel8.4/grading-scripts
         state: directory
 
-    - name: Copy Script Components to Correct Location
+    - name: Copy Intrastructure Script Components to Correct Location
+      synchronize:
+        src: Files/Scripts/main/
+        dest: /content/courses/ws362/rhel8.4/
+
+    - name: Copy Lab Script Components to Correct Location
       synchronize:
         src: Files/Scripts/grading/
         dest: /content/courses/ws362/rhel8.4/grading-scripts/
