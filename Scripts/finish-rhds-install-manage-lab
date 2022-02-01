@@ -26,8 +26,9 @@ PATH=/usr/bin:/bin:/usr/sbin:/sbin
 # Corresponding lab_COMMAND functions must be defined.
 declare -a valid_commands=(start finish)
 
-  echo "Preparing ${target} for lab exercise work:"
-  echo " . Cleaning RHDS Server and Preparing for Installation"
+  echo "Cleaning ${target} for lab exercise work:"
+  echo " . Ensuring RHDS is Installed and Configured for upcoming labs"
   cd /home/student/Github/rh423_labs/Playbooks
-  ansible-playbook rhds_remove.yml
+  ansible-playbook rhds_install.yml
+  ansible-playbook rhds_instance.yml
   echo "*****    SUCCESS      *****"
