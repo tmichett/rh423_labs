@@ -13,5 +13,5 @@
 
     - name: Copy Script Components to Correct Location
       synchronize:
-        src: Files/Scripts/grading/"{{ item }}"
+        src: Files/Scripts/grading/
         dest: /content/courses/ws362/rhel8.4/grading-scripts/
