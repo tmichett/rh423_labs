@@ -28,7 +28,7 @@ declare -a valid_commands=(start finish)
 
 
 function lab_start {
-    print_header "Preparing ${target} for lab cleanup and next lab:"
+    print_header "Preparing ${target} lab environment:"
     pad " . Ensuring RHDS is Installed and Configured for upcoming labs"
     cd /home/student/Github/rh423_labs_public/Playbooks
     ansible-playbook rhds_install.yml
