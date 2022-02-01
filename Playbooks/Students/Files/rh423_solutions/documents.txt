@@ -1,0 +1,32 @@
+Title: Red Hat Directory Server Release Notes
+description: Highlighted features and updates related to Red Hat Directory Server 11 (11.4)
+Authors: Muehlfeld 
+
+Title: Red Hat Directory Server Installation Guide
+description: Instructions for installing Red Hat Directory Server
+Authors: Muehlfeld 
+
+Title: Red Hat Directory Server Administration Guide
+description: Basic and advanced administration of Directory Server
+Authors: Muehlfeld Bokoc Capek Kovar Ballard
+
+Title: Red Hat Directory Server Deployment Guide
+description: Concepts and configuration options for planning an effective directory service
+Authors: Muehlfeld Bokoc Capek Ballard
+
+Title: Red Hat Directory Server Configuration, Command, and File Reference
+description: Reference guide for configuring Directory Server
+Authors: 
+
+Title: Red Hat Directory Server Performance Tuning Guide
+description: Tuning the performance of Directory Server
+Authors: Muehlfeld Bokoc Capek Ballard
+
+All documents have the same location, version, and publisher
+
+Location: http://materials.example.com/rhds_docs
+Version: 11.4
+Publisher: Red Hat, Inc.
+
+
+

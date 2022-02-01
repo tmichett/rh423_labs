@@ -1,0 +1,31 @@
+localhost ansible_ssh_user=kiosk
+workstation
+classroom ansible_ssh_user=instructor
+bastion
+rhds
+replica1
+replica2
+servera
+
+[clients]
+servera
+
+[servers]
+rhds
+replica1
+replica2
+
+[replicas]
+replica1
+replica2
+
+[novello]
+workstation
+bastion
+rhds
+replica1
+replica2
+servera
+
+[novello:vars]
+ansible_ssh_user = root

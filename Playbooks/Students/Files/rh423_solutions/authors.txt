@@ -1,0 +1,19 @@
+# Authors of RHDS docs - best guess taken from the 11.4 PDFs
+
+name: Marc Muehlfeld
+surname: Muehlfeld
+email: mmuehlfeld@redhat.com
+
+name: Petr Bokoč
+surname: Bokoč
+
+name: Tomáš Čapek
+surname: Čapek
+
+name: Ella Deon Ballard
+surname: Ballard
+prefered name: Dean
+
+name: Petr Kovář
+surname: Kovář
+

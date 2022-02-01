@@ -1,0 +1,56 @@
+dn: ou=Clients,dc=lab,dc=example,dc=com
+objectclass: organizationalunit
+objectclass: top
+ou: Clients
+
+dn: uid=dscully,ou=Clients,dc=lab,dc=example,dc=com
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+uid: dscully
+cn: Dr. Dana Scully
+sn: Scully
+givenname: Dana
+street: 3170 West 53rd Street
+l: Annapolis
+st: MD
+postalCode: 21402
+facsimileTelephoneNumber: +1 202 555 7117
+mobile: +1 202 555 6431
+mail: D_Scully@fbi.gov
+o: Federal Bureau of Investigations
+
+dn: uid=slayer,ou=Clients,dc=lab,dc=example,dc=com
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+uid: slayer
+cn: Buffy Summers
+sn: Summers
+givenname: Buffy
+street: 1630 Revello Drive
+l: Sunnydale
+st: CA
+postalCode: 94086
+pager: +1 408 555 4291
+
+dn: cn=fictitious,ou=Clients,dc=lab,dc=example,dc=com
+objectclass: groupOfUniqueNames
+objectclass: top
+cn: fictitious
+description: Fictitious characters from television shows or movies
+uniqueMember: uid=dscully,ou=Clients,dc=lab,dc=example,dc=com
+uniqueMember: uid=slayer,ou=Clients,dc=lab,dc=example,dc=com
+
+version: 1
+dn: o=Red Hat TV,ou=Clients,dc=lab,dc=example,dc=com
+objectclass: organization
+objectclass: top
+objectclass: pkiCA
+o: Red Hat TV
+businessCategory: fictitious
+cACertificate:< file:///home/student/rh423_solutions/dirsrv_ca.crt
+
+

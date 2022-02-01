@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# Copyright 2022 Red Hat, Inc.
+#
+# NAME
+#     lab-rhds-install-manage - grading script for RH318 Managing Logical Networks
+#     Guided Exercise
+#
+# SYNOPSIS
+#     lab-manage-networks {start|finish}
+#
+#        start   - prepare the system for starting the lab
+#        finish  - perform post-lab cleanup
+#
+# DESCRIPTION
+#     This script, based on singular argument, either does start,
+#     or finish for the RH423 Installing and Managing Red Hat Directory Server Lab.
+#
+# CHANGELOG
+#   * Tue Feb 1, 2022 Travis Michette <tmichett@redhat.com>
+#   - original code
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+# This defines which subcommands are supported (start, grade, etc.).
+# Corresponding lab_COMMAND functions must be defined.
+declare -a valid_commands=(start finish)
+
+  echo "Cleaning ${target} for lab exercise work:"
+  echo " . Ensuring RHDS is Installed and Configured for upcoming labs"
+  cd /home/student/Github/rh423_labs/Playbooks
+  ansible-playbook rhds_install.yml
+  ansible-playbook rhds_instance.yml
+  echo "*****    SUCCESS      *****"
