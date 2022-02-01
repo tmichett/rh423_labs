@@ -2,6 +2,8 @@
 - name: Create Grading Scripts and Environment
   hosts: ws362_classroom
   become: true
+  collections:
+    - ansible.posix  ### Needed for synchronize
   tasks:
     - name: Grading Scripts
       file:
