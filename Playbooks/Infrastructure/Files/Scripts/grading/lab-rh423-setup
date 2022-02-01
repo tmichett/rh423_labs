@@ -7,7 +7,7 @@
 #     Guided Exercise
 #
 # SYNOPSIS
-#     lab-manage-networks {start|finish}
+#     lab-rh423-setup {start}
 #
 #        start   - prepare the system for starting the lab
 #        finish  - perform post-lab cleanup

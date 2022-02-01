@@ -3,11 +3,11 @@
 # Copyright 2022 Red Hat, Inc.
 #
 # NAME
-#     lab-rh423-setup - grading script for RH318 Managing Logical Networks
+#     lab-rhds-install - grading script for Guided Exercise: Installing Red Hat Directory Server
 #     Guided Exercise
 #
 # SYNOPSIS
-#     lab-h423-setup {start}
+#     lab-rhds-install {start|finish}
 #
 #        start   - prepare the system for starting the lab
 #        finish  - perform post-lab cleanup
@@ -28,17 +28,24 @@ declare -a valid_commands=(start finish)
 
 
 function lab_start {
-  print_header "Synchronizing ${target} content on Workstation:"
-  pad " . Synchronizing Github Repository"
-  cd /home/student/Github/
-  git pull
+  print_header "Preparing ${target} for lab exercise work:"
+  pad " . Cleaning RHDS Server and Preparing for Installation"
+  cd /home/student/Github/rh423_labs/Playbooks
+  ansible-playbook rhds_remove.yml
   print_SUCCESS
   print_line
 }
 
 
 
-
+function lab_finish {
+    print_header "Preparing ${target} for lab cleanup and next lab:"
+    pad " . Ensuring RHDS is Installed and Configured for upcoming labs"
+    cd /home/student/Github/rh423_labs/Playbooks
+    ansible-playbook rhds_install.yml
+    print_SUCCESS
+    print_line
+}
 ############### Don't EVER change anything below this line ###############
 
 # Source library of functions

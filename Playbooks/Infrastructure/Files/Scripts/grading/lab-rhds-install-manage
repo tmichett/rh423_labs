@@ -3,11 +3,11 @@
 # Copyright 2022 Red Hat, Inc.
 #
 # NAME
-#     lab-rhds-install-manage - grading script for RH318 Managing Logical Networks
+#     lab-rhds-install-manage - grading script for RH423 Lab Installing and Managing Directory Server
 #     Guided Exercise
 #
 # SYNOPSIS
-#     lab-manage-networks {start|finish}
+#     lab-rhds-install-manage {start|finish}
 #
 #        start   - prepare the system for starting the lab
 #        finish  - perform post-lab cleanup
