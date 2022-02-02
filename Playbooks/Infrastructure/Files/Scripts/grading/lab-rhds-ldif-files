@@ -54,6 +54,10 @@ function lab_finish {
   ansible-playbook rhds_instance.yml
   print_SUCCESS
   print_line
+  pad " . Ensuring LDIF File exists"
+  ansible-playbook entries_files_ge_script.yml
+  print_SUCCESS
+  print_line
 }
 
 ############### Don't EVER change anything below this line ###############

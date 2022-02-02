@@ -1,0 +1,14 @@
+---
+- name: Place completed LDIF File for GE Writing LDIF Files for Script Finish
+
+  hosts: workstation
+  vars:
+     clients_file: clients.ldif
+  tasks:
+    - name: ldif GE solution file to server
+      copy:
+        src: "Files/rh423_solutions/{{ clients_file }}"
+        dest: "/home/student/{{ clients_file }}"
+        owner: student
+        group: student
+        mode: '0644'
