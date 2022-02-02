@@ -14,7 +14,7 @@
 #
 # DESCRIPTION
 #     This script, based on singular argument, either does start,
-#     or finish for the RH423 Installing and Managing Red Hat Directory Server Lab.
+#     or finish for the RH423 Configuring Red Hat Directory Server Lab.
 #
 # CHANGELOG
 #   * Tue Feb 1, 2022 Travis Michette <tmichett@redhat.com>
