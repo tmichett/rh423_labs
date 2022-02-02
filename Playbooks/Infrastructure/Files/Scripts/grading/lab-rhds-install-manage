@@ -31,9 +31,12 @@ declare -a valid_commands=(start finish)
 
 function lab_start {
   print_header "Preparing ${target} for lab exercise work:"
-  pad " . Preparing for Installation"
+  pad " . Ensuring RHDS is Installed"
   cd /home/student/Github/rh423_labs_public/Playbooks
   ansible-playbook rhds_install.yml
+  print_SUCCESS
+  print_line
+  pad " . Ensuring RHDS is Configured"
   ansible-playbook rhds_instance.yml
   print_SUCCESS
   print_line
@@ -42,14 +45,18 @@ function lab_start {
 
 
 function lab_finish {
-    print_header "Preparing ${target} for lab cleanup and next lab:"
-    pad " . Ensuring RHDS is Installed and Configured for upcoming labs"
-    cd /home/student/Github/rh423_labs_public/Playbooks
-    ansible-playbook rhds_install.yml
-    ansible-playbook rhds_instance.yml
-    print_SUCCESS
-    print_line
+  print_header "Preparing ${target} for lab exercise work:"
+  pad " . Ensuring RHDS is Installed"
+  cd /home/student/Github/rh423_labs_public/Playbooks
+  ansible-playbook rhds_install.yml
+  print_SUCCESS
+  print_line
+  pad " . Ensuring RHDS is Configured"
+  ansible-playbook rhds_instance.yml
+  print_SUCCESS
+  print_line
 }
+
 ############### Don't EVER change anything below this line ###############
 
 # Source library of functions
