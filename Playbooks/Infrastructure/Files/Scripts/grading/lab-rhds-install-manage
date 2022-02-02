@@ -17,7 +17,7 @@
 #     or finish for the RH423 Installing and Managing Red Hat Directory Server Lab.
 #     This script ensures that the system is setup and ready for removal so it can be
 #     reinstalled. It also ensures that at the end of the lab, RHDS is fully operational.
-# 
+#
 # CHANGELOG
 #   * Tue Feb 1, 2022 Travis Michette <tmichett@redhat.com>
 #   - original code
@@ -31,7 +31,7 @@ declare -a valid_commands=(start finish)
 
 function lab_start {
   print_header "Preparing ${target} for lab exercise work:"
-  pad " . Cleaning RHDS Server and Preparing for Installation"
+  pad " . Preparing for Installation"
   cd /home/student/Github/rh423_labs_public/Playbooks
   ansible-playbook rhds_install.yml
   ansible-playbook rhds_instance.yml
