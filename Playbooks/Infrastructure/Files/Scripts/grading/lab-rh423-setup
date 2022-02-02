@@ -38,6 +38,11 @@ function lab_start {
   git clone https://github.com/tmichett/rh423_labs_public.git
   print_SUCCESS
   print_line
+  pad " . Copying Lab Solution Files"
+  cd /home/student/Github/rh423_labs_public/Playbooks
+  ansible-playbook solution_files.yml
+  print_SUCCESS
+  print_line
 }
 
 
