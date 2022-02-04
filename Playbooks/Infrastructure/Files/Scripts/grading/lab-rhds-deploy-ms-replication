@@ -1,0 +1,65 @@
+#!/bin/bash
+#
+# Copyright 2022 Red Hat, Inc.
+#
+# NAME
+#     lab-rhds-deploy-ms-replication - grading script for RH423 Deploying Cascading Replication Guided Exercise
+#
+# SYNOPSIS
+#     lab-rhds-deploy-ms-replication {start|finish}
+#
+#        start   - prepare the system for starting the lab
+#        finish  - perform post-lab cleanup
+#
+# DESCRIPTION
+#     This script, based on singular argument, either does start,
+#     or finish for the RH423 Installing and Managing Red Hat Directory Server Lab.
+#     This script ensures that the system is setup and ready for removal so it can be
+#     reinstalled. It also ensures that at the end of the lab, RHDS is fully operational.
+#
+# CHANGELOG
+#   * Tue Feb 1, 2022 Travis Michette <tmichett@redhat.com>
+#   - original code
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+# This defines which subcommands are supported (start, grade, etc.).
+# Corresponding lab_COMMAND functions must be defined.
+declare -a valid_commands=(start finish)
+
+
+function lab_start {
+  print_header "Preparing ${target} for lab exercise work:"
+  pad " . Ensuring RHDS is Installed"
+  cd /home/student/Github/rh423_labs_public/Playbooks
+  ansible-playbook rhds_install.yml
+  print_SUCCESS
+  print_line
+  pad " . Ensuring RHDS is Configured"
+  ansible-playbook rhds_instance.yml
+  print_SUCCESS
+  print_line
+}
+
+
+
+function lab_finish {
+  print_header "Preparing ${target} for lab exercise work:"
+  pad " . Ensuring RHDS is Installed"
+  cd /home/student/Github/rh423_labs_public/Playbooks
+  ansible-playbook rhds_install.yml
+  print_SUCCESS
+  print_line
+  pad " . Ensuring RHDS is Configured"
+  ansible-playbook rhds_instance.yml
+  print_SUCCESS
+  print_line
+}
+
+############### Don't EVER change anything below this line ###############
+
+# Source library of functions
+source /usr/local/lib/${function_lib}
+source /usr/local/lib/${platform_lib}
+
+grading_main_program "$@"
