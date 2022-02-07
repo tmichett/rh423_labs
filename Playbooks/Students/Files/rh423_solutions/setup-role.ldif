@@ -1,0 +1,35 @@
+dn: cn=RHDSAuthors,ou=people,dc=lab,dc=example,dc=com
+changetype: add
+objectclass: top
+objectclass: LdapSubEntry
+objectclass: nsRoleDefinition
+objectclass: nsSimpleRoleDefinition
+objectclass: nsManagedRoleDefinition
+cn: RHDSAuthors
+description: managed role for document authors
+
+dn: uid=mmuehlfeld,ou=people,dc=lab,dc=example,dc=com
+changetype: modify
+add: nsRoleDN
+nsRoleDN: cn=RHDSAuthors,ou=people,dc=lab,dc=example,dc=com
+
+dn: uid=pbokoc,ou=people,dc=lab,dc=example,dc=com
+changetype: modify
+add: nsRoleDN
+nsRoleDN: cn=RHDSAuthors,ou=people,dc=lab,dc=example,dc=com
+
+dn: uid=tcapek,ou=people,dc=lab,dc=example,dc=com
+changetype: modify
+add: nsRoleDN
+nsRoleDN: cn=RHDSAuthors,ou=people,dc=lab,dc=example,dc=com
+
+dn: uid=dballard,ou=people,dc=lab,dc=example,dc=com
+changetype: modify
+add: nsRoleDN
+nsRoleDN: cn=RHDSAuthors,ou=people,dc=lab,dc=example,dc=com
+
+dn: uid=pkovar,ou=people,dc=lab,dc=example,dc=com
+changetype: modify
+add: nsRoleDN
+nsRoleDN: cn=RHDSAuthors,ou=people,dc=lab,dc=example,dc=com
+
