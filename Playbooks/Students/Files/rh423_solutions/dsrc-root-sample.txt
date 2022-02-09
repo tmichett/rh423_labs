@@ -1,0 +1,17 @@
+# This configuration should be placed as a hidden file in /root: /root/.dsrc
+
+[rh423]
+uri = ldapi://%%2fvar%%2frun%%2fslapd-rh423.socket
+basedn = dc=lab,dc=example,dc=com
+binddn = cn=Directory Manager
+
+# The above is for use locally on a RHDS system. 
+# Note that in the uri for ldapi, the  '/' is replaced to '%%2f' 
+# If used with a different instance name, be sure to update that in the uri.
+
+# with ldapi, the uid/gid of 0/0 is mapped to cn=Directory Manager 
+# This means that no password is required.
+
+# For use remotely, change the ldapi to ldap or ldaps and add a tls_cacertdir parameter.
+# Reference: https://directory.fedoraproject.org/docs/389ds/howto/quickstart.html
+

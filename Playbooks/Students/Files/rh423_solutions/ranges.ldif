@@ -1,0 +1,15 @@
+# For use with ldapmodify
+
+dn: ou=Ranges,dc=lab,dc=example,dc=com
+changetype: add
+objectClass: top
+objectClass: extensibleObject
+objectClass: organizationalUnit
+ou: Ranges
+
+dn: cn=Account IDs,ou=Ranges,dc=lab,dc=example,dc=com
+changetype: add
+objectclass: top
+objectclass: extensibleObject
+cn: Account IDs
+

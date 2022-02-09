@@ -1,0 +1,13 @@
+# This configuration is per user in their home directory as a hidden file:  ~/.dsrc
+
+[rh423]
+uri = ldap://rhds.lab.example.com
+basedn = dc=lab,dc=example,dc=com
+binddn = cn=Directory Manager
+tls_cacertdir = /etc/pki/tls/certs
+
+# There will still be a prompt for the password but the less options are required 
+# on the CLI when useing ds* utilities, including the required -b basedn with dsidm
+
+# Reference: https://directory.fedoraproject.org/docs/389ds/howto/quickstart.html
+
