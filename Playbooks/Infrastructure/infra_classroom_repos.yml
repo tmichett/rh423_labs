@@ -1,0 +1,54 @@
+---
+- name: Setup Novello VMs with correct Repos and RHEL Version
+  hosts: ws362_classroom
+  vars:
+  gather_facts: true
+  become: true
+  collections:
+    - ansible.posix  ### Needed for synchronize
+    
+  tasks:
+
+## Check for RHDS ISO Directory's Existance
+    - name: Check /content/rhds11_4 Directory
+      stat:
+        path:  /content/rhds11_4
+      register: RHDS_Dir
+
+    - name: Output Directory Status
+      debug:
+        msg: "The RHDS Content directory already exists"
+      when: RHDS_Dir.stat.exists
+
+## Create the directory for mounting the RHDS content ISO
+    - name: Create /content/rhds11_4 Directories
+      file:
+        path: /content/rhds11_4
+        state: directory
+        mode: '0755'
+      when: RHDS_Dir.stat.exists == false
+
+## Mount the RHDS content ISO
+    - name: Mount RHDS DVD Content
+      mount:
+        path: /content/rhds11_4
+        src: /dev/sr2
+        fstype: iso9660
+        state: mounted
+
+
+
+- name: Setup RHDS Systems with Correct REPO Files
+  hosts: ws_vms
+  gather_facts: true
+  remote_user: root
+  collections:
+    - ansible.posix  ### Needed for synchronize
+    
+  tasks:
+    ## Setup Repo Files on Server systems for RHDS 11.4
+    - name: RHDS DVD Repo
+      synchronize:
+        src: Files/rhds_dvd.repo
+        dest: /etc/yum.repos.d/rhds_dvd.repo
+

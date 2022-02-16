@@ -1,0 +1,5 @@
+[rhds-11.4]
+baseurl = http://content.example.com/rhds11_4
+enabled = true
+gpgcheck = false
+name = Red Hat Directory Server 11.4 (dvd)
