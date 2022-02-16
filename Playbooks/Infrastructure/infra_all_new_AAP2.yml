@@ -1,0 +1,36 @@
+---
+- name: push content to materials.example.com
+  hosts: ws362_classroom
+  become: true
+    vars_files:
+    # Contains variables to setup the course
+    - course_vars.yml
+  collections:
+    - ansible.posix  ### Needed for synchronize
+  tasks:
+    - name: docs dir exists
+      file:
+        # path will need to update for rh423 course instead of ws362 but keep the RHEL and IdM docs available (currently in readonly mounted image)
+        path: "{{ course_dir }}/materials/rhds_docs"
+        state: directory
+
+    - name: RHDS docs
+      synchronize:
+        src: Files/docs/
+        dest: "{{ course_dir }}/materials/rhds_docs"
+
+    - name: Grading Scripts - Check for Directory
+      file:
+        # path will need to update for rh423 course instead of ws362 but keep the RHEL and IdM docs available (currently in readonly mounted image)
+        path: "{{ course_dir }}/grading-scripts"
+        state: directory
+
+    - name: Copy Intrastructure Script Components to Correct Location
+      synchronize:
+        src: Files/Scripts/main/
+        dest: "{{ course_dir }}"
+
+    - name: Copy Lab Script Components to Correct Location
+      synchronize:
+        src: Files/Scripts/grading/
+        dest: "{{ course_dir }}grading-scripts/"
