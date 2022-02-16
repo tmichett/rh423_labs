@@ -2,7 +2,7 @@
 - name: push content to materials.example.com
   hosts: ws362_classroom
   become: true
-    vars_files:
+  vars_files:
     # Contains variables to setup the course
     - course_vars.yml
   collections:
@@ -33,4 +33,4 @@
     - name: Copy Lab Script Components to Correct Location
       synchronize:
         src: Files/Scripts/grading/
-        dest: "{{ course_dir }}grading-scripts/"
+        dest: "{{ course_dir }}/grading-scripts/"
