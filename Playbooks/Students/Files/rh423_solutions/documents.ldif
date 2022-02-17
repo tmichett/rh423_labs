@@ -1,13 +1,67 @@
+# Authors of RHDS docs - taken from the 11.4 PDFs
+
+dn: uid=mmuehlfeld,ou=people,dc=lab,dc=example,dc=com
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+uid: mmuehlfeld
+cn: Marc Muehlfeld
+sn: Muehlfeld
+
+dn: uid=pbokoc,ou=people,dc=lab,dc=example,dc=com
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+uid: pbokoc
+cn: Petr Bokoč
+sn: Bokoč
+
+dn: uid=tcapek,ou=people,dc=lab,dc=example,dc=com
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+uid: tcapek
+cn: Tomáš Čapek
+sn: Čapek
+
+dn: uid=dballard,ou=people,dc=lab,dc=example,dc=com
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+uid: dballard
+cn: Ella Deon Ballard
+sn: Ballard
+
+dn: uid=pkovar,ou=people,dc=lab,dc=example,dc=com
+objectclass: inetOrgPerson
+objectclass: organizationalPerson
+objectclass: person
+objectclass: top
+uid: pkovar
+cn: Petr Kovář
+sn: Kovář
+
+# Create ou=Documents
+
+dn: ou=Documents,dc=lab,dc=example,dc=com
+objectclass: top
+objectclass: organizationalunit
+ou: Documents
+
+# Load RHDS Docs as documents
+
 dn: cn=rhds_release,ou=Documents,dc=lab,dc=example,dc=com
 objectclass: document
 objectclass: top
-# required identifier, set manaually here but a plugin exists to help generate
 documentIdentifier: 1001
 cn: rhds_release
 description: Highlighted features and updates related to Red Hat Directory Server 11 (11.4)
 documentTitle: Red Hat Directory Server Release Notes
 documentVersion: 11.4
-# documentAuthor has to be a DN
 documentAuthor: uid=mmuehlfeld,ou=People,dc=lab,dc=example,dc=com
 documentLocation: http://materials.example.com/rhds_docs
 documentPublisher: Red Hat, Inc.
