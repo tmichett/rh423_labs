@@ -45,14 +45,14 @@ Lab scripts that will call and execute the playbooks.
 +
 [source,bash]
 ----
-[travis@cs9 Infrastructure]$ ansible-playbook infra_classroom_repos.yml 
+[travis@cs9 Infrastructure]$ ansible-playbook infra_classroom_repos.yml
 ----
 +
 .. Copy Materials to Classroom server and Scripts to Workstation
 +
 [source,bash]
 ----
-[travis@cs9 Infrastructure]$ ansible-playbook infra_all_new_AAP2_ws_scripts.yml 
+[travis@cs9 Infrastructure]$ ansible-playbook infra_all_new_AAP2_ws_scripts.yml
 ----
 
 
@@ -103,4 +103,18 @@ Preparing  for lab exercise work:
 ----
 [root@rhds ~]# dsconf slapd-rh423 backend suffix list
 dc=lab,dc=example,dc=com (userroot)
+----
+
+
+== Classroom Deployment and Sealing Process
+
+A new playbook has been created to supercede instructions above. The new playbook now uses the *inventory* file for local (Novello) with short hostnames and the *inventory.laptop* is meant to be run from a remote location as it sets *Ansible_Host* variables to the *WS362_** for access through the SSH tunneling setup.
+
+.*Initial Setup*
+
+. Run *site.yml* from local laptop with the ansible-playbook command and be sure to specify *-i inventory.laptop* to inform Ansible to use the correct inventory.
++
+[source,bash]
+----
+travis@cs9 Infrastructure]$ ansible-playbook site.yml -i inventory.laptop
 ----

@@ -1,19 +1,20 @@
 [bastion_VM]
-bastion
+bastion           ansible_host=ws362_bastion     ansible_user=student
 
 [classroom_VM]
-classroom
+classroom         ansible_host=ws362_classroom   ansible_user=instructor
 
 [workstation_VM]
-workstation
+workstation       ansible_host=ws362_workstation
+
 
 
 [lab_VMs]
 workstation
-servera
-replica1
-replica2
-rhds
+servera       ansible_host=ws362_servera
+replica1      ansible_host=ws362_replica1
+replica2      ansible_host=ws362_replica2
+rhds          ansible_host=ws362_rhds
 
 [rhds_servers]
 replica1

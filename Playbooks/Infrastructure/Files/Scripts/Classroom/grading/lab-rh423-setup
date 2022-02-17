@@ -45,7 +45,7 @@ function lab_start {
   print_SUCCESS
   print_line
   pad " . Copying Grading Scripts"
-  cd /home/student/Github/rh423_labs/Playbooks/Infrastructure
+  cd /home/student/Github/rh423_labs/Playbooks
   ansible-playbook Grading_Script_Copy.yml
   print_SUCCESS
   print_line

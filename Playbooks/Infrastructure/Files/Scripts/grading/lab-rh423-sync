@@ -29,11 +29,24 @@ declare -a valid_commands=(start finish)
 
 function lab_start {
   print_header "Synchronizing ${target} content on Workstation:"
-  pad " . Synchronizing Github Repository"
-  cd /home/student/Github/
+  pad " . Synchronizing Github Public Labs Repository"
+  cd /home/student/Github/rh423_labs_public/
   git pull
   print_SUCCESS
   print_line
+
+  pad " . Synchronizing Github Lab Scripts Repository"
+  cd /home/student/Github/rh423_labs
+  git pull
+  print_SUCCESS
+  print_line
+
+  pad " . Synchronizing Github Lab Scripts Repository"
+  cd /home/student/Github/rh423_labs/Playbooks/Infrastructure/
+  ansible-playbook Grading_Script_Copy.yml
+  print_SUCCESS
+  print_line
+
 }
 
 

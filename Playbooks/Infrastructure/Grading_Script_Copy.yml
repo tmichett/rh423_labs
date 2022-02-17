@@ -1,0 +1,24 @@
+---
+- name: push content workstation
+  hosts: workstation_VM
+  become: true
+  remote_user: root
+
+  tasks:
+    - name: Grading Scripts - Check for Directory
+      file:
+        # path will need to update for rh423 course instead of ws362 but keep the RHEL and IdM docs available (currently in readonly mounted image)
+        path: /usr/local/lib
+        state: directory
+
+    - name: Copy Intrastructure Script Components to Correct Location
+      synchronize:
+        src: Files/Scripts/main/
+        dest: /usr/local/lib
+
+    - name: Copy Lab Script Components to Correct Location
+      synchronize:
+        src: Files/Scripts/grading/
+        dest: /usr/local/lib
+        rsync_opts:
+          - "--chmod=F777"

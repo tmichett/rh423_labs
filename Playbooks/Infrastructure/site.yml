@@ -1,0 +1,22 @@
+---
+# That playbook the environment to be built.
+# The playbook will copy Documentation and setup the classroom REPOs
+# The playbook will expand system disks
+# The playbook will copy a minimal set of scripts to classroom and the rest to WS
+
+- name: WS362 Travis Classroom Customization
+  hosts: all
+  gather_facts: no
+
+  ### Expand VMs to have correct drive size
+- import_playbook: VM_Config_Size.yml
+
+  ### Update the Classroom Server with Mounting Disks and Repo Files
+- import_playbook: infra_classroom_repos.yml
+
+  ### Push out Grading Scripts to Classroom (Limited Set)
+- import_playbook: Grading_Script_Copy.yml
+
+  ### Push out remaining Grading Scripts and Customize Workstation
+- import_playbook: infra_all_new_AAP2_ws_scripts.yml
+...

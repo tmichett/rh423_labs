@@ -1,0 +1,28 @@
+---
+- name: Setup Novello VMs with correct Filesystem Size
+  hosts: disk_100gb, workstation_VM
+  vars:
+  gather_facts: yes
+  remote_user: root
+  become: true
+
+  tasks:
+
+    ## Grow the Partion to the 100GB
+    - name: Ensure that /dev/vda3 extends to the entire size of the disk.
+      command: growpart /dev/vda 3
+      register: part_results
+      ignore_errors: true
+
+    - name: Show results
+      debug:
+        var: part_results
+
+    ## Grow the Filesystem to 100GB Size
+
+    - name: Grow the filesystem
+      command: xfs_growfs /
+      register: grow_results
+    - name: Show XFS Grow Results
+      debug:
+        var: grow_results
