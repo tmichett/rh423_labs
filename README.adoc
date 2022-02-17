@@ -1,3 +1,15 @@
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images/
+
 = RH423 Lab Scripts and Playbooks
 
 == Usage
@@ -106,6 +118,14 @@ dc=lab,dc=example,dc=com (userroot)
 ----
 
 
+.New Deployment
+[IMPORTANT]
+======
+There is a new master playbook to deploy using the new inventory that sets everything up for you. The playbook is *site.yml*. You must have the Ansible.Posix collection installed.
+
+Also, when running locally, need to specify *-i inventory.laptop* so you can connect to SSH via the JumpHost.
+======
+
 == Classroom Deployment and Sealing Process
 
 A new playbook has been created to supercede instructions above. The new playbook now uses the *inventory* file for local (Novello) with short hostnames and the *inventory.laptop* is meant to be run from a remote location as it sets *Ansible_Host* variables to the *WS362_** for access through the SSH tunneling setup.
@@ -117,4 +137,56 @@ A new playbook has been created to supercede instructions above. The new playboo
 [source,bash]
 ----
 travis@cs9 Infrastructure]$ ansible-playbook site.yml -i inventory.laptop
+----
+
+
+
+
+.*Testing*
+
+. Login to Workstation
+
+. Run the "Setup" Script (This will need run for all new environments by students)
++
+[source,bash]
+----
+[student@workstation ~]$ lab rh423-setup start
+
+Preparing  for setup workstation for work:
+
+ . Creating Github Directory...................................  SUCCESS
+
+ . Cloning Github Repository...................................  SUCCESS
+
+ . Copying Lab Solution Files..................................  SUCCESS
+
+----
+
+. Run the RHDS Install Manage Finish script (this setups up and configures the server from CH2 EoC Lab)
++
+[source,bash]
+----
+[student@workstation ~]$ lab rhds-install-manage finish
+
+Preparing  for lab exercise work:
+
+ . Ensuring RHDS is Installed..................................  SUCCESS
+
+ . Ensuring RHDS is Configured.................................  SUCCESS
+
+----
+
+. SSH to the *RHDS* system as "root"
++
+[source,bash]
+----
+[student@workstation ~]$ ssh root@rhds
+----
+
+. Run the *dsconf* command to verify server is setup and configured
++
+[source,bash]
+----
+[root@rhds ~]# dsconf slapd-rh423 backend suffix list
+dc=lab,dc=example,dc=com (userroot)
 ----
