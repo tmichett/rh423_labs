@@ -1,12 +1,12 @@
 ---
 - name: Setup Novello VMs with correct Repos and RHEL Version
-  hosts: ws362_classroom
+  hosts: classroom_VM
   vars:
   gather_facts: true
   become: true
   collections:
     - ansible.posix  ### Needed for synchronize
-    
+
   tasks:
 
 ## Check for RHDS ISO Directory's Existance
@@ -39,16 +39,15 @@
 
 
 - name: Setup RHDS Systems with Correct REPO Files
-  hosts: ws_vms
+  hosts: rhds_servers
   gather_facts: true
   remote_user: root
   collections:
     - ansible.posix  ### Needed for synchronize
-    
+
   tasks:
     ## Setup Repo Files on Server systems for RHDS 11.4
     - name: RHDS DVD Repo
       synchronize:
         src: Files/rhds_dvd.repo
         dest: /etc/yum.repos.d/rhds_dvd.repo
-
