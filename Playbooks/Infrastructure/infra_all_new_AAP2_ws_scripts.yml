@@ -1,0 +1,72 @@
+---
+- name: push content to materials.example.com
+  hosts: ws362_classroom
+  become: true
+  vars_files:
+    # Contains variables to setup the course
+    - course_vars.yml
+  collections:
+    - ansible.posix  ### Needed for synchronize
+  tasks:
+    - name: docs dir exists
+      file:
+        # path will need to update for rh423 course instead of ws362 but keep the RHEL and IdM docs available (currently in readonly mounted image)
+        path: "{{ course_dir }}/materials/rhds_docs"
+        state: directory
+
+    - name: RHDS docs
+      synchronize:
+        src: Files/docs/
+        dest: "{{ course_dir }}/materials/rhds_docs"
+
+- name: push content workstation
+  hosts: ws362_workstation
+  become: true
+  remote_user: root
+                       
+  tasks:  
+    - name: Grading Scripts - Check for Directory
+      file:
+        # path will need to update for rh423 course instead of ws362 but keep the RHEL and IdM docs available (currently in readonly mounted image)
+        path: /usr/local/lib
+        state: directory
+
+    - name: Copy Intrastructure Script Components to Correct Location
+      synchronize:
+        src: Files/Scripts/main/
+        dest: /usr/local/lib
+
+    - name: Copy Lab Script Components to Correct Location
+      synchronize:
+        src: Files/Scripts/grading/
+        dest: /usr/local/lib
+        rsync_opts:
+          - "--chmod=F777"
+
+
+
+#### Items below here are correct Ansible and Work, but take way/way/way too long
+#### Looked at Synchronize module for RSYNC opts for a more efficient solution
+
+#    - name: Make Lab Scripts Executable Find
+#      find:
+#        path: /usr/local/lib
+#        patterns: "lab-*"
+#      register: scripts_to_change
+
+#    - name: Make Lab Scripts Executable
+#      debug:
+#        msg: "{{ scripts_to_change.files }}" 
+
+#    - name: Make Lab Scripts Executable
+#      file:
+#        path: "{{ item.path }}"
+#        path: /usr/local/lib/lab-*
+#        mode: '0777'
+#      with_items:
+#        - "{{ scripts_to_change.files }}"  
+
+#    - name: Make Lab Scripts Executable
+#      debug:
+#        msg: "{{ lookup('fileglob','/usr/local/lib/*')}}"
+ 
