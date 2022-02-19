@@ -39,6 +39,10 @@ function lab_start {
   ansible-playbook rhds_instance.yml
   print_SUCCESS
   print_line
+  pad " . Updating Directory Entries"
+  ansible-playbook databases_remove_suffixes.yml
+  print_SUCCESS
+  print_line
 }
 
 
@@ -52,6 +56,10 @@ function lab_finish {
   print_line
   pad " . Ensuring RHDS is Configured"
   ansible-playbook rhds_instance.yml
+  print_SUCCESS
+  print_line
+  pad " . Updating Directory Entries"
+  ansible-playbook databases_remove_suffixes.yml
   print_SUCCESS
   print_line
 }
