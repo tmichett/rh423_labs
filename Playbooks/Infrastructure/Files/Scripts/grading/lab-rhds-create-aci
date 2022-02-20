@@ -58,6 +58,10 @@ function lab_finish {
   ansible-playbook rhds_instance.yml
   print_SUCCESS
   print_line
+  pad " . Updating Directory Entries"
+  ansible-playbook access_add_acis.yml
+  print_SUCCESS
+  print_line
 }
 
 ############### Don't EVER change anything below this line ###############
