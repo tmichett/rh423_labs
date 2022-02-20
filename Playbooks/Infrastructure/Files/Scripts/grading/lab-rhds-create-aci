@@ -39,6 +39,10 @@ function lab_start {
   ansible-playbook rhds_instance.yml
   print_SUCCESS
   print_line
+  pad " . Updating Directory Entries"
+  ansible-playbook manage_roles_solve.yml
+  print_SUCCESS
+  print_line
 }
 
 
