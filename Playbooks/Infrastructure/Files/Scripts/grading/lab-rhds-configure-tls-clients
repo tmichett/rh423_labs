@@ -39,8 +39,12 @@ function lab_start {
   ansible-playbook rhds_instance.yml
   print_SUCCESS
   print_line
-  pad " . Updating RHDS Certificates"
+  pad " . Ensuring Secure RHDS"
   ansible-playbook replace_rhds_cert.yml
+  print_SUCCESS
+  print_line
+  pad " . Preparing client system"
+  ansible-playbook prep_clean_servera.yml
   print_SUCCESS
   print_line
 }
