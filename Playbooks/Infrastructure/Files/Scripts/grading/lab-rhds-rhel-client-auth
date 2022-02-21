@@ -43,6 +43,10 @@ function lab_start {
   ansible-playbook replace_rhds_cert.yml
   print_SUCCESS
   print_line
+  pad " . Updating Entries"
+  ansible-playbook client_users_solve.yml
+  print_SUCCESS
+  print_line
   pad " . Preparing client system"
   ansible-playbook prep_clean_servera.yml
   print_SUCCESS
