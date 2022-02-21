@@ -39,6 +39,10 @@ function lab_start {
   ansible-playbook rhds_instance.yml
   print_SUCCESS
   print_line
+  pad " . Updating RHDS Certificates"
+  ansible-playbook replace_rhds_cert.yml
+  print_SUCCESS
+  print_line
 }
 
 
