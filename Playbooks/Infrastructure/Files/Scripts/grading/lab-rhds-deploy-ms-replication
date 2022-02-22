@@ -39,6 +39,14 @@ function lab_start {
   ansible-playbook rhds_instance.yml
   print_SUCCESS
   print_line
+  pad " . Ensuring Secure RHDS"
+  ansible-playbook replace_rhds_cert.yml
+  print_SUCCESS
+  print_line
+  pad " . Ensuring Secure Replica1"
+  ansible-playbook replica1_secure_install.yml
+  print_SUCCESS
+  print_line
 }
 
 
