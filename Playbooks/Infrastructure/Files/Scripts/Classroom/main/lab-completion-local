@@ -8,8 +8,15 @@ _lab_module()
 # advertise a fixed subset of scripts of your choosing.
   # Advertise all grading scripts that start with {lab|demo}- in the
   # course grading-scripts directory:
-  local GRADING_URL="http://content.example.com/courses/${RHT_COURSE}/${RHT_VMTREE%/*}/grading-scripts/"
-  local PROBS=$( curl -s ${GRADING_URL} | sed -n "s/.*href=\"${1##*/}-\([^\"]*\)\".*/\1/p")
+
+## Commented out for local grading ##
+##  local GRADING_URL="http://content.example.com/courses/${RHT_COURSE}/${RHT_VMTREE%/*}/grading-scripts/"
+##  local PROBS=$( curl -s ${GRADING_URL} | sed -n "s/.*href=\"${1##*/}-\([^\"]*\)\".*/\1/p")
+
+## Local Grading ##
+
+  local PROBS=$( ls /usr/local/lib | sed -n "s/.${1##/}-//p")
+
   # Advertise a subset of grading scripts that start with {lab|demo}-
   # in the course grading-scripts directory:
 # case ${1##*/} in

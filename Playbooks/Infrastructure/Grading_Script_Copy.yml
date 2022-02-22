@@ -11,10 +11,10 @@
         path: /usr/local/lib
         state: directory
 
-    - name: Copy Intrastructure Script Components to Correct Location
-      synchronize:
-        src: Files/Scripts/main/
-        dest: /usr/local/lib
+#    - name: Copy Intrastructure Script Components to Correct Location
+#      synchronize:
+#        src: Files/Scripts/main/
+#        dest: /usr/local/lib
 
     - name: Copy Lab Script Components to Correct Location
       synchronize:
