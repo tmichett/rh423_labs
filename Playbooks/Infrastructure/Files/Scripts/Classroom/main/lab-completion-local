@@ -15,7 +15,7 @@ _lab_module()
 
 ## Local Grading ##
 
-  local PROBS=$( ls /usr/local/lib | sed -n "s/.${1##/}-//p")
+  local PROBS=$( ls /usr/local/lib | sed -n "s/.*${1##*/}-//p")
 
   # Advertise a subset of grading scripts that start with {lab|demo}-
   # in the course grading-scripts directory:
