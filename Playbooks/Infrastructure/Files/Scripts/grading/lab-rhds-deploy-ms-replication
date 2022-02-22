@@ -47,6 +47,14 @@ function lab_start {
   ansible-playbook replica1_secure_install.yml
   print_SUCCESS
   print_line
+  pad " . Ensuring replication agreement"
+  ansible-playbook replica1_agreement.yml
+  print_SUCCESS
+  print_line
+  pad " . Removing any instances from replica2"
+  ansible-playbook replica2_remove.yml
+  print_SUCCESS
+  print_line
 }
 
 
