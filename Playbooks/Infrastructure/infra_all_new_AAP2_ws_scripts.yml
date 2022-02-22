@@ -35,7 +35,10 @@
         src: Files/Scripts/Classroom/grading/
         dest: "{{ course_dir }}/grading-scripts/"
 
-
+    - name: Replace Grading Tab Completion Script on Classroom
+      copy:
+        src: Files/Scripts/Classroom/main/lab-completion-local
+        dest: "{{ course_dir }}/lab-completion"
 
 - name: push content workstation
   hosts: workstation_VM
@@ -49,10 +52,10 @@
         path: /usr/local/lib
         state: directory
 
-    - name: Copy Intrastructure Script Components to Correct Location
-      synchronize:
-        src: Files/Scripts/main/
-        dest: /usr/local/lib
+#    - name: Copy Intrastructure Script Components to Correct Location
+#      synchronize:
+#        src: Files/Scripts/main/
+#        dest: /usr/local/lib
 
     - name: Copy Lab Script Components to Correct Location
       synchronize:
@@ -61,7 +64,19 @@
         rsync_opts:
           - "--chmod=F777"
 
+### Fix for Command Line (tab) Completion
 
+#    - name: Copy Lab Completion Components to Correct Location
+#      copy:
+#        src: Files/Scripts/Classroom/main/lab-completion-local
+#        dest: /usr/share/bash-completion/completions/lab
+#        force: yes
+
+
+
+## Run the VMGet Course Setup
+    - name: Run VM Get Course to Copy and Get Keys for Bash Completion
+      shell: rht-vmsetup-getcourse
 
 #### Items below here are correct Ansible and Work, but take way/way/way too long
 #### Looked at Synchronize module for RSYNC opts for a more efficient solution
