@@ -35,6 +35,8 @@
         src: /dev/sr2
         fstype: iso9660
         state: mounted
+        boot: yes
+        opts: ro,auto,_netdev
 
 
 

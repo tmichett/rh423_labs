@@ -7,3 +7,9 @@ ansible-galaxy collection install -r collections/requirements.yml -p collections
 RHDS 11.4 DVD Presented to OCP
 
 /dev/sr2
+
+
+[student@workstation completions]$ pwd
+/usr/share/bash-completion/completions
+
+This goes from rht-vmsetup-course
