@@ -39,6 +39,10 @@ function lab_start {
   ansible-playbook rhds_instance.yml
   print_SUCCESS
   print_line
+  pad " . Ensuring Secure RHDS"
+  ansible-playbook replace_rhds_cert.yml
+  print_SUCCESS
+  print_line
 }
 
 
