@@ -38,6 +38,27 @@
         boot: yes
         opts: ro,auto,_netdev
 
+    - name: Copy Mount Script
+      copy:
+        src:  Files/mount.sh
+        dest: /opt/mount.sh
+        mode: '0755'
+
+    - name: Copy and Create Mount Service
+      copy:
+        src:  Files/classroom_mount.service
+        dest: /etc/systemd/system/classroom_mount.service
+        mode: '0644'
+
+    - name: Enabled Classroom Mount Service
+      systemd:
+        name:  classroom_mount
+        state: started
+        enabled: yes 
+        
+
+
+
 
 
 - name: Setup RHDS Systems with Correct REPO Files

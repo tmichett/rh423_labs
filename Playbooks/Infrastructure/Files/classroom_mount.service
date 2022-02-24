@@ -1,0 +1,10 @@
+[Unit]
+Description=Mounts drives RHDS because of Boot
+Type=idle
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /opt/mount.sh
+
+[Install]
+WantedBy=multi-user.target
