@@ -32,7 +32,7 @@
     - name: Mount RHDS DVD Content
       mount:
         path: /content/rhds11_4
-        src: /dev/sr2
+        src: UUID="2022-02-24-12-57-27-00"
         fstype: iso9660
         state: mounted
         boot: yes
