@@ -48,7 +48,7 @@ function lab_start {
   print_SUCCESS
   print_line
   pad " . Removing any replication agreements"
-  ansible-playbook remove_repl_agreement.yml
+  ansible-playbook remove_repl1_agreement.yml
   print_SUCCESS
   print_line
 }
