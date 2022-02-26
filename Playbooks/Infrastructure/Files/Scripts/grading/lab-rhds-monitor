@@ -43,6 +43,10 @@ function lab_start {
   ansible-playbook replace_rhds_cert.yml
   print_SUCCESS
   print_line
+  pad " . Updating Directory Entries"
+  ansible-playbook add_entries_and_users.yml
+  print_SUCCESS
+  print_line
 }
 
 
